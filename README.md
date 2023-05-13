@@ -36,6 +36,7 @@ Classification report for test set:
       NORMAL       0.95      0.95      0.95       245
    PNEUMONIA       0.93      0.95      0.94       223
        COVID       1.00      0.98      0.99       252
+
     accuracy                           0.96       720
    macro avg       0.96      0.96      0.96       720
 weighted avg       0.96      0.96      0.96       720
@@ -52,6 +53,7 @@ Classification report for train set:
     accuracy                           0.97       720
    macro avg       0.97      0.97      0.97       720
 weighted avg       0.97      0.97      0.97       720
+
 
 References:
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7521412/
