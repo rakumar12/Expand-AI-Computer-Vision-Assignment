@@ -36,7 +36,8 @@ Classification report for test set:
       NORMAL       0.95      0.95      0.95       245
               
 
-   PNEUMONIA       0.93      0.95      0.94       223
+  
+  PNEUMONIA       0.93      0.95      0.94       223
    
 
        COVID       1.00      0.98      0.99       252
