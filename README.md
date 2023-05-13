@@ -58,8 +58,13 @@ Classification report for train set:
 
 ## References:
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7521412/
+
 https://github.com/ChristianConchari/COVID-19-detection-with-Chest-X-Ray-using-PyTorch
+
 https://ieeexplore.ieee.org/document/9344870
+
 https://www.hindawi.com/journals/jhe/2021/6799202/
+
 https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0265949
+
 https://github.com/mohd-faizy/09P_Detecting_COVID_19_with_Chest_X-Ray_using_PyTorch
