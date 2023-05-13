@@ -34,12 +34,12 @@ Classification report for test set:
               precision    recall   f1-score   support
 
       NORMAL       0.95      0.95      0.95       245
-      PNEUMONIA       0.93      0.95      0.94       223
-      COVID       1.00      0.98      0.99       252
+      PNEUMONIA    0.93      0.95      0.94       223
+      COVID        1.00      0.98      0.99       252
 
     accuracy                           0.96       720
-   macro avg       0.96      0.96      0.96       720
-weighted avg       0.96      0.96      0.96       720
+    macro avg       0.96      0.96     0.96       720
+    weighted avg    0.96      0.96     0.96       720
 
 
 Classification report for train set:
