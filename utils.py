@@ -7,7 +7,43 @@ import torchvision.transforms as transforms
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-
+class Custom_Xray_Dataset(torch.utils.data.Dataset):
+    def __init__(self, type ,image_dirs, transform):
+        def get_images(class_name):
+            images = [x for x in os.listdir(image_dirs[class_name]) if x[-3:].lower().endswith('png')]
+            print(f'Found {type} {len(images)} {class_name} examples')
+            return images
+        
+        self.images = {}
+        self.classes_list =  ['NORMAL', 'PNEUMONIA', 'COVID']
+        
+        for class_name in self.classes_list:
+            self.images[class_name] = get_images(class_name)
+            
+        self.image_dirs = image_dirs
+        self.transform = transform
+        
+    
+    def __len__(self):
+        return sum([len(self.images[class_name]) for class_name in self.classes_list])
+    
+    
+    def __getitem__(self, index):
+        class_name = random.choice(self.classes_list)
+        index = index % len(self.images[class_name])
+        image_name = self.images[class_name][index]
+        image_path = os.path.join(self.image_dirs[class_name], image_name)
+        img = Image.open(image_path).convert('RGB')
+        data = np.asarray(img)
+        hist,bins = np.histogram(data.flatten(),256,[0,256])
+        cdf = hist.cumsum()
+        cdf_normalized = cdf * hist.max()/ cdf.max()
+        cdf_m = np.ma.masked_equal(cdf,0)
+        cdf_m = (cdf_m - cdf_m.min())*255/(cdf_m.max()-cdf_m.min())
+        cdf = np.ma.filled(cdf_m,0).astype('uint8')
+        image = Image.fromarray(cdf[img])
+        
+        return self.transform(image), self.classes_list.index(class_name)
 
 transform = {
     'train': transforms.Compose([
